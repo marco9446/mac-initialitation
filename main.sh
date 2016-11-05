@@ -62,7 +62,7 @@ fi
 # list of program to install
 programs=( 'google-chrome-beta' 'chrome-remote-desktop-host' 'spectacle' 'github-desktop' 'yujitach-menumeters' 'intellij-idea' 'vlc'
 						'skype' 'youtube-to-mp3' 'kodi' 'flux' 'spotify' 'android-studio' 'firefox-beta'
-						'smcfancontrol' 'google-drive'
+						'smcfancontrol' 'google-drive' 'cheatsheet'
 					)
 
 for i in "${programs[@]}"
