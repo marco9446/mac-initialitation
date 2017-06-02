@@ -1,0 +1,180 @@
+# This file contains programs that user could instal 
+# Each ew program should have this structure:
+#
+# - name : <String> // friendly name of the program
+#   os : <List>  // list of operating systems on which the program can be installed. Possible choices are: 
+#                // Osx, Linux, Raspberry.
+#   installer: <String> // Possible choices are: normal (it will be installed using apt or brew for cli programs), pip, npm, 
+#                       // normalcask (it will be installed using apt or brew for GUI programs)
+#   configurator: <String> (Optional) // Path of the script to execute after the succesful installation of the program
+#   brew_name: <String> (Optional) // name of the brew frmula to be called. If not specified it would be used the name parameter
+#   apt_name: <String> (Optional) // name of the apt packet to be called. If not specified it would be used the name parameter
+#   pip_npm_name: <String> (Optional) // name of the pip or npm packet to be called. If not specified it would be used the name parameter
+#   confirm_installation: <Boolean> (Optional, Default true) // ask to the user confirmation for the installation
+#   shell:  (optional) // A shell commnad that has to be executed BEFORE the installation of the program
+#       os: <List> // list of operating systems on which the command should be executed. 
+#       command: <String> // shell command
+      
+
+
+
+#
+##  Normal and NormalCask
+#
+- name: java
+  os:
+    - Osx
+    - Linux
+  installer: normalcask
+  apt_name: "default-jre"
+  confirm_installation: false
+
+- name: "logitech-control-center"
+  os: 
+    - Osx
+  installer: normalcask
+  confirm_installation: false
+
+- name: mongodb
+  os:
+    - Osx
+  installer: normal
+
+- name: Visual Studio Code
+  os:
+    - Osx
+  installer: normalcask
+  brew_name: "visual-studio-code"
+  configurator: "./program_config/" # TODO
+
+- name: Chrome Beta
+  os:
+    - Osx
+    - Linux
+  installer: normalcask
+  brew_name: "caskroom/versions/google-chrome-beta"
+  apt_name: "chromium-browser"
+
+- name: spectacle
+  os:
+    - Osx
+  installer: normal
+
+- name: Menu meters
+  os: 
+    - Osx
+  installer: normalcask
+  brew_name: "yujitach-menumeters"
+
+- name: Intellij
+  os:
+    - Osx
+  installer: normalcask
+  brew_name: "intellij-idea"
+
+- name: vlc
+  os:
+    - Osx
+    - Linux
+  installer: normalcask
+
+- name: skype
+  os:
+    - Osx
+    - Linux
+  installer: normalcask
+
+- name: kodi
+  os:
+    - Osx
+    - Linux
+  installer: normalcask
+
+- name: f.lux
+  os:
+    - Linux
+  installer: normalcask
+  apt_name: fluxgui
+  shell:
+    os:
+      - Linux
+    command: "sudo add-apt-repository ppa:nathan-renniewaldock/flux && sudo apt-get update"
+
+- name: spotify
+  os:
+    - Osx
+    - Linux
+  installer: normalcask
+  apt_name: "spotify-client"
+  shell:
+    os:
+      - Linux
+    command: "sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys BBEBDCB318AD50EC6865090613B00F1FD2C19886 && echo deb http://repository.spotify.com stable non-free | sudo tee /etc/apt/sources.list.d/spotify.list && sudo apt-get update"
+
+- name: firefox
+  os:
+    - Osx
+  installer: normalcask
+
+- name: Google drive
+  os:
+    - Osx
+    - Linux
+  installer: normalcask
+  brew_name: "google-drive"
+  apt_name: "gnome-control-center gnome-online-accounts"
+
+- name: Android SDK
+  os:
+    - Osx
+  installer: normal
+  brew_name: "android-sdk"
+
+- name: Iterm2
+  os:
+    - Osx
+  installer: normalcask
+  brew_name: "iterm2"
+
+- name: Etcher (OS image flasher)
+  os:
+    - Osx
+  installer: normalcask
+  brew_name: "etcher"
+
+- name: htop
+  os:
+    - Osx
+    - Linux
+    - Raspberry
+  installer: normalcask
+
+
+
+#
+##  Npm
+#
+- name: Firebase
+  os:
+    - Osx
+    - Linux
+  installer: npm
+  pip_npm_name: "firebase-tools"
+
+- name: Polymer
+  os:
+    - Osx
+    - Linux
+  installer: npm
+  pip_npm_name: "polymer-cli"
+
+- name: Gulp
+  os:
+    - Osx
+    - Linux
+  installer: npm
+  pip_npm_name: "gulp-cli"
+
+#
+##  Pip
+#
