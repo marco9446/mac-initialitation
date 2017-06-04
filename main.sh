@@ -2,18 +2,48 @@
 
 # Global variables accessible by other scripts
 USERNAME=`whoami`
+OS=""
 
+
+macInitialization(){
+	sudo which brew > /dev/null
+	if [[ $? == 1 ]]; then
+		# brew isn't installed
+		printf "\nInstalling Xcode command line and  Homebrew ...\n"
+		xcode-select --install
+		/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+	fi
+
+	printf "\nUpdating Homebrew ...\n"
+	brew update #&& brew upgrade;
+	#  install python3
+	brew install python3
+	#  intsall node
+	brew install node
+}
 
 # Identify what kind of machine, the script is running on
 if [[ `uname` == "Darwin" ]]; then
 	# we are on MACOS
-	echo "Executing mac script ..."
-	source ./mac_script.sh
+	OS="Osx"
+	# macInitialization
 
 elif [[ `uname` == "Linux" ]];then 
 	# we are on Linux
-	echo	echo "Executing Linux script ..."
-	source ./linux_apt_script.sh
+	OS="Linux"
+	sudo apt-get update
+	printf "\nInstalling nodejs npm and pip3 \n"
+	curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -
+	sudo apt-get -y install nodejs
+	sudo apt-get -y install npm
+	sudo apt -y install python3-pip
+	sudo apt -y install ubuntu-make
 else 
-	echo "not supported platform"
+	printf "not supported platform"
 fi
+
+printf "\nInstalling the yaml parser\n"
+pip3 install PyYAML
+
+python3 yaml_parser.py $OS
+

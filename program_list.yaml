@@ -4,8 +4,7 @@
 # - name : <String> // friendly name of the program
 #   os : <List>  // list of operating systems on which the program can be installed. Possible choices are: 
 #                // Osx, Linux, Raspberry.
-#   installer: <String> // Possible choices are: normal (it will be installed using apt or brew for cli programs), pip, npm, 
-#                       // normalcask (it will be installed using apt or brew for GUI programs)
+#   installers: <List> // Possible choices are: brew, brewcask, apt, umake, pip, npm
 #   configurator: <String> (Optional) // Path of the script to execute after the succesful installation of the program
 #   brew_name: <String> (Optional) // name of the brew frmula to be called. If not specified it would be used the name parameter
 #   apt_name: <String> (Optional) // name of the apt packet to be called. If not specified it would be used the name parameter
@@ -25,75 +24,102 @@
   os:
     - Osx
     - Linux
-  installer: normalcask
+  installers: 
+    - apt
+    - brewcask
   apt_name: "default-jre"
   confirm_installation: false
 
 - name: "logitech-control-center"
   os: 
     - Osx
-  installer: normalcask
+  installers: 
+    - brewcask
   confirm_installation: false
 
 - name: mongodb
   os:
     - Osx
-  installer: normal
+  installers: 
+    - brew
 
 - name: Visual Studio Code
   os:
     - Osx
-  installer: normalcask
+    - Linux
+  installers: 
+    - umake
+    - brewcask
   brew_name: "visual-studio-code"
-  configurator: "./program_config/" # TODO
+  apt_name: "ide visual-studio-code"
+  configurator: "./program_config/vsCode/post_installation.sh" 
 
 - name: Chrome Beta
   os:
     - Osx
     - Linux
-  installer: normalcask
+  installers:
+    - apt
+    - brewcask
   brew_name: "caskroom/versions/google-chrome-beta"
   apt_name: "chromium-browser"
 
 - name: spectacle
   os:
     - Osx
-  installer: normal
+  installers: 
+    - brewcask
 
 - name: Menu meters
   os: 
     - Osx
-  installer: normalcask
+  installers: 
+    - brewcask
   brew_name: "yujitach-menumeters"
 
 - name: Intellij
   os:
     - Osx
-  installer: normalcask
+    - Linux
+  installers: 
+    - umake
+    - brewcask
   brew_name: "intellij-idea"
+  apt_name: "ide idea"
 
 - name: vlc
   os:
     - Osx
     - Linux
-  installer: normalcask
+  installers: 
+    - apt
+    - brewcask
 
 - name: skype
   os:
     - Osx
     - Linux
-  installer: normalcask
+  shell:
+    os: 
+      - Linux
+    command: printf 'open Software & Updates/Other software and select Canonical Partners \n' &&  read -n1 -r -p "Press any key to continue" 
+  installers: 
+    - apt
+    - brewcask
 
 - name: kodi
   os:
     - Osx
     - Linux
-  installer: normalcask
+  installers: 
+    - apt
+    - brewcask
 
 - name: f.lux
   os:
     - Linux
-  installer: normalcask
+  installers: 
+    - apt
   apt_name: fluxgui
   shell:
     os:
@@ -104,7 +130,9 @@
   os:
     - Osx
     - Linux
-  installer: normalcask
+  installers: 
+    - apt
+    - brewcask
   apt_name: "spotify-client"
   shell:
     os:
@@ -114,32 +142,41 @@
 - name: firefox
   os:
     - Osx
-  installer: normalcask
+  installers: 
+    - brewcask
 
 - name: Google drive
   os:
     - Osx
     - Linux
-  installer: normalcask
+  installers: 
+    - brewcask
+    - apt
   brew_name: "google-drive"
   apt_name: "gnome-control-center gnome-online-accounts"
 
 - name: Android SDK
   os:
     - Osx
-  installer: normal
+    - Linux
+  installers: 
+    - brew
+    - umake
   brew_name: "android-sdk"
+  apt_name: "android"
 
 - name: Iterm2
   os:
     - Osx
-  installer: normalcask
+  installers: 
+    - brewcask
   brew_name: "iterm2"
 
 - name: Etcher (OS image flasher)
   os:
     - Osx
-  installer: normalcask
+  installers: 
+    - brewcask
   brew_name: "etcher"
 
 - name: htop
@@ -147,33 +184,47 @@
     - Osx
     - Linux
     - Raspberry
-  installer: normalcask
+  installers: 
+    - brew
+    - apt
 
 
 
 #
 ##  Npm
 #
-- name: Firebase
+- name: Firebase CLI
   os:
     - Osx
     - Linux
-  installer: npm
+  installers: 
+    - npm
   pip_npm_name: "firebase-tools"
 
-- name: Polymer
+- name: bower
   os:
     - Osx
     - Linux
-  installer: npm
+  installers: 
+    - npm
+
+- name: Polymer CLI
+  os:
+    - Osx
+    - Linux
+  installers: 
+    - npm
   pip_npm_name: "polymer-cli"
 
 - name: Gulp
   os:
     - Osx
     - Linux
-  installer: npm
+  installers: 
+    - npm
   pip_npm_name: "gulp-cli"
+
+
 
 #
 ##  Pip
