@@ -216,6 +216,13 @@
   apt_name: "ide arduino"
   brew_name: arduino
 
+- name: The Unarchiver
+  os: 
+    - Osx
+  installers:
+    - brewcask
+  brew_name: "the-unarchiver"
+
 #
 ##  Npm
 #

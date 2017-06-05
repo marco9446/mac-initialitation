@@ -27,18 +27,18 @@ macInitialization(){
 if [[ `uname` == "Darwin" ]]; then
 	# we are on MACOS
 	OS="Osx"
-	# macInitialization
+	macInitialization
 
 elif [[ `uname` == "Linux" ]];then 
 	# we are on Linux
 	OS="Linux"
-	# sudo apt-get update
-	# printf "\nInstalling nodejs npm and pip3 \n"
-	# curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -
-	# sudo apt-get -y install nodejs
-	# sudo apt-get -y install npm
-	# sudo apt -y install python3-pip
-	# sudo apt -y install ubuntu-make
+	sudo apt-get update
+	printf "\nInstalling nodejs npm and pip3 \n"
+	curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -
+	sudo apt-get -y install nodejs
+	sudo apt-get -y install npm
+	sudo apt -y install python3-pip
+	sudo apt -y install ubuntu-make
 	sudo apt -y install lastpass-cli
 	sudo apt -y install git
 else 
