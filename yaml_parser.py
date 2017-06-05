@@ -10,6 +10,9 @@ from program import Program
 PLATFORM = sys.argv[1]
 
 
+
+
+
 class bcolors:
     HEADER = '\033[95m'
     OKBLUE = '\033[94m'
@@ -29,5 +32,10 @@ for el in doc:
 
     # check if program can be installed on this platform
     if PLATFORM in el['os']:
-        pr = Program(el, PLATFORM)
-        pr.installModule()
+        if (len(sys.argv) <= 2):
+            pr = Program(el, PLATFORM)
+            pr.installModule()
+        else:
+            if (el['name'] == sys.argv[2]):
+                pr = Program(el, PLATFORM)
+                pr.installModule()

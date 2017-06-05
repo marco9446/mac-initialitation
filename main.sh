@@ -20,6 +20,7 @@ macInitialization(){
 	brew install python3
 	#  intsall node
 	brew install node
+	brew install lastpass-cli --with-pinentry
 }
 
 # Identify what kind of machine, the script is running on
@@ -31,19 +32,32 @@ if [[ `uname` == "Darwin" ]]; then
 elif [[ `uname` == "Linux" ]];then 
 	# we are on Linux
 	OS="Linux"
-	sudo apt-get update
-	printf "\nInstalling nodejs npm and pip3 \n"
-	curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -
-	sudo apt-get -y install nodejs
-	sudo apt-get -y install npm
-	sudo apt -y install python3-pip
-	sudo apt -y install ubuntu-make
+	# sudo apt-get update
+	# printf "\nInstalling nodejs npm and pip3 \n"
+	# curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -
+	# sudo apt-get -y install nodejs
+	# sudo apt-get -y install npm
+	# sudo apt -y install python3-pip
+	# sudo apt -y install ubuntu-make
+	sudo apt -y install lastpass-cli
+	sudo apt -y install git
 else 
 	printf "not supported platform"
+fi
+
+status="$(lpass status)"
+echo $status 
+if [[ "$status" == "Not logged in." ]]; then
+	echo "Please enter your Lastpass username (mail)"
+	read laspass_username
+	lpass login $laspass_username
+
 fi
 
 printf "\nInstalling the yaml parser\n"
 pip3 install PyYAML
 
-python3 yaml_parser.py $OS
+python3 yaml_parser.py $OS $1
+
+lpass logout -f
 

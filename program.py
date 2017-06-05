@@ -73,6 +73,8 @@ class Program(object):
 
     def _runPostInstallation(self):
         if (self.configurator != None):
+            # call(['pwd'])
+            call(['chmod', '+x', self.configurator])
             call(self.configurator, shell=True)
 
 

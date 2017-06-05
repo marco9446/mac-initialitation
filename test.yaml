@@ -14,10 +14,12 @@
 #       os: <List> // list of operating systems on which the command should be executed. 
 #       command: <String> // shell command
 
-- name: Firebase
+- name: Zsh
   os:
     - Osx
     - Linux
   installers: 
-    - npm
-  pip_npm_name: "firebase-tools"
+    - apt
+    - brew
+  apt_name: "zsh"
+  configurator: "./program_config/zsh/zsh_post_install.sh"

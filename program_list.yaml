@@ -188,7 +188,33 @@
     - brew
     - apt
 
+- name: zsh
+  os:
+    - Osx
+    - Linux
+  installers: 
+    - apt
+    - brew
+  configurator: "./program_config/zsh/zsh_post_install.sh"
 
+- name: vim
+  os:
+    - Osx
+    - Linux
+  installers: 
+    - apt
+    - brew
+  configurator: "./program_config/vim/vim_post_install.sh"
+
+- name: Arduino ide
+  os: 
+    - Osx
+    - Linux
+  installers:
+    - umake
+    - brewcask
+  apt_name: "ide arduino"
+  brew_name: arduino
 
 #
 ##  Npm
