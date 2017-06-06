@@ -21,6 +21,9 @@ macInitialization(){
 	#  intsall node
 	brew install node
 	brew install lastpass-cli --with-pinentry
+	brew install wget
+
+	source ./program_config/mac_config/mac_final_config.sh
 }
 
 # Identify what kind of machine, the script is running on
