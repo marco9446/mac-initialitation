@@ -5,7 +5,7 @@ export ZSH=/Users/marcoravazzini/.oh-my-zsh
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-ZSH_THEME="agnoster"
+ZSH_THEME="sorin"
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -49,8 +49,7 @@ COMPLETION_WAITING_DOTS="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git sublime brew sudo web-search)
-
+plugins=(git sublime brew sudo web-search zsh-autosuggestions zsh-syntax-highlighting)
 # User configuration
 
 export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
@@ -83,14 +82,8 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-export PATH="$HOME/AndroidSDK/tools:$PATH"
-export PATH="$HOME/AndroidSDK/platform-tools:$PATH"
-
 # it removes the computer's name before the path
-DEFAULT_USER="marcoravazzini"
+# DEFAULT_USER="marcoravazzini"
 
-alias pip="pip3"
+# alias pip="pip3"
 alias serve="python3 -m http.server --cgi"
-
-export NVM_DIR="/Users/marcoravazzini/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm

@@ -1,0 +1,264 @@
+# This file contains programs that user could instal 
+# Each ew program should have this structure:
+#
+# - name : <String> // friendly name of the program
+#   os : <List>  // list of operating systems on which the program can be installed. Possible choices are: 
+#                // Osx, Linux, Raspberry.
+#   installers: <List> // Possible choices are: brew, brewcask, apt, umake, pip, npm
+#   configurator: <String> (Optional) // Path of the script to execute after the successful installation of the program
+#   brew_name: <String> (Optional) // name of the brew formula to be called. If not specified it would be used the name parameter
+#   apt_name: <String> (Optional) // name of the apt packet to be called. If not specified it would be used the name parameter
+#   pip_npm_name: <String> (Optional) // name of the pip or npm packet to be called. If not specified it would be used the name parameter
+#   confirm_installation: <Boolean> (Optional, Default true) // ask to the user confirmation for the installation
+#   shell:  (optional) // A shell command that has to be executed BEFORE the installation of the program
+#       os: <List> // list of operating systems on which the command should be executed. 
+#       command: <String> // shell command
+      
+
+
+
+#
+##  Normal and NormalCask
+#
+- name: java
+  os:
+    - Osx
+    - Linux
+  installers: 
+    - apt
+    - brewcask
+  apt_name: "default-jre"
+  confirm_installation: false
+
+- name: "logitech-control-center"
+  os: 
+    - Osx
+  installers: 
+    - brewcask
+  confirm_installation: false
+
+- name: mongodb
+  os:
+    - Osx
+  installers: 
+    - brew
+
+- name: Visual Studio Code
+  os:
+    - Osx
+    - Linux
+  installers: 
+    - umake
+    - brewcask
+  brew_name: "visual-studio-code"
+  apt_name: "ide visual-studio-code"
+  configurator: "./program_config/vsCode/post_installation.sh" 
+
+- name: Chrome Beta
+  os:
+    - Osx
+    - Linux
+  installers:
+    - apt
+    - brewcask
+  brew_name: "caskroom/versions/google-chrome-beta"
+  apt_name: "chromium-browser"
+
+- name: spectacle
+  os:
+    - Osx
+  installers: 
+    - brewcask
+
+- name: Menu meters
+  os: 
+    - Osx
+  installers: 
+    - brewcask
+  brew_name: "yujitach-menumeters"
+
+- name: Intellij
+  os:
+    - Osx
+    - Linux
+  installers: 
+    - umake
+    - brewcask
+  brew_name: "intellij-idea"
+  apt_name: "ide idea"
+
+- name: vlc
+  os:
+    - Osx
+    - Linux
+  installers: 
+    - apt
+    - brewcask
+
+- name: skype
+  os:
+    - Osx
+    - Linux
+  shell:
+    os: 
+      - Linux
+    command: printf 'open Software & Updates/Other software and select Canonical Partners \n' &&  read -n1 -r -p "Press any key to continue" 
+  installers: 
+    - apt
+    - brewcask
+
+- name: kodi
+  os:
+    - Osx
+    - Linux
+  installers: 
+    - apt
+    - brewcask
+
+- name: f.lux
+  os:
+    - Linux
+  installers: 
+    - apt
+  apt_name: fluxgui
+  shell:
+    os:
+      - Linux
+    command: "sudo add-apt-repository ppa:nathan-renniewaldock/flux && sudo apt-get update"
+
+- name: spotify
+  os:
+    - Osx
+    - Linux
+  installers: 
+    - apt
+    - brewcask
+  apt_name: "spotify-client"
+  shell:
+    os:
+      - Linux
+    command: "sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys BBEBDCB318AD50EC6865090613B00F1FD2C19886 && echo deb http://repository.spotify.com stable non-free | sudo tee /etc/apt/sources.list.d/spotify.list && sudo apt-get update"
+
+- name: firefox
+  os:
+    - Osx
+  installers: 
+    - brewcask
+
+- name: Google drive
+  os:
+    - Osx
+    - Linux
+  installers: 
+    - brewcask
+    - apt
+  brew_name: "google-drive"
+  apt_name: "gnome-control-center gnome-online-accounts"
+
+- name: Android SDK
+  os:
+    - Osx
+    - Linux
+  installers: 
+    - brewcask
+    - umake
+  brew_name: "android-sdk"
+  apt_name: "android"
+
+- name: Iterm2
+  os:
+    - Osx
+  installers: 
+    - brewcask
+  brew_name: "iterm2"
+
+- name: Etcher (OS image flasher)
+  os:
+    - Osx
+  installers: 
+    - brewcask
+  brew_name: "etcher"
+
+- name: htop
+  os:
+    - Osx
+    - Linux
+    - Raspberry
+  installers: 
+    - brew
+    - apt
+
+- name: zsh
+  os:
+    - Osx
+    - Linux
+  installers: 
+    - apt
+    - brew
+  configurator: "./program_config/zsh/zsh_post_install.sh"
+
+- name: vim
+  os:
+    - Osx
+    - Linux
+  installers: 
+    - apt
+    - brew
+  configurator: "./program_config/vim/vim_post_install.sh"
+
+- name: Arduino ide
+  os: 
+    - Osx
+    - Linux
+  installers:
+    - umake
+    - brewcask
+  apt_name: "ide arduino"
+  brew_name: arduino
+
+- name: The Unarchiver
+  os: 
+    - Osx
+  installers:
+    - brewcask
+  brew_name: "the-unarchiver"
+
+#
+##  Npm
+#
+- name: Firebase CLI
+  os:
+    - Osx
+    - Linux
+  installers: 
+    - npm
+  pip_npm_name: "firebase-tools"
+
+- name: bower
+  os:
+    - Osx
+    - Linux
+  installers: 
+    - npm
+
+- name: Polymer CLI
+  os:
+    - Osx
+    - Linux
+  installers: 
+    - npm
+  pip_npm_name: "polymer-cli"
+
+- name: Gulp
+  os:
+    - Osx
+    - Linux
+  installers: 
+    - npm
+  pip_npm_name: "gulp-cli"
+
+
+
+#
+##  Pip
+#
