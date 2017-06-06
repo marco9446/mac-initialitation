@@ -5,12 +5,12 @@
 #   os : <List>  // list of operating systems on which the program can be installed. Possible choices are: 
 #                // Osx, Linux, Raspberry.
 #   installers: <List> // Possible choices are: brew, brewcask, apt, umake, pip, npm
-#   configurator: <String> (Optional) // Path of the script to execute after the succesful installation of the program
-#   brew_name: <String> (Optional) // name of the brew frmula to be called. If not specified it would be used the name parameter
+#   configurator: <String> (Optional) // Path of the script to execute after the successful installation of the program
+#   brew_name: <String> (Optional) // name of the brew formula to be called. If not specified it would be used the name parameter
 #   apt_name: <String> (Optional) // name of the apt packet to be called. If not specified it would be used the name parameter
 #   pip_npm_name: <String> (Optional) // name of the pip or npm packet to be called. If not specified it would be used the name parameter
 #   confirm_installation: <Boolean> (Optional, Default true) // ask to the user confirmation for the installation
-#   shell:  (optional) // A shell commnad that has to be executed BEFORE the installation of the program
+#   shell:  (optional) // A shell command that has to be executed BEFORE the installation of the program
 #       os: <List> // list of operating systems on which the command should be executed. 
 #       command: <String> // shell command
       

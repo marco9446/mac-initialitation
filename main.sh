@@ -23,7 +23,6 @@ macInitialization(){
 	brew install lastpass-cli --with-pinentry
 	brew install wget
 
-	source ./program_config/mac_config/mac_final_config.sh
 }
 
 # Identify what kind of machine, the script is running on
@@ -61,6 +60,13 @@ printf "\nInstalling the yaml parser\n"
 pip3 install PyYAML
 
 python3 yaml_parser.py $OS $1
+
+if [[ "$OS" == "Osx"]]; then
+	source ./program_config/mac_config/mac_final_config.sh
+elif [[ "$OS" == "Linux" ]]; then 
+	source ./program_config/linux_config/linux_final_config.sh
+fi
+
 
 lpass logout -f
 

@@ -1,0 +1,1 @@
+# This script will be executed after the installation of the last program in program_list.yaml
