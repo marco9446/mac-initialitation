@@ -223,6 +223,13 @@
     - brewcask
   brew_name: "the-unarchiver"
 
+- name: oversight # notify when camera or microfone are activated
+  os:
+    - Osx
+  installers:
+    - brewcask
+  confirm_installation: false
+  
 #
 ##  Npm
 #
