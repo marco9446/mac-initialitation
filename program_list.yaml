@@ -30,11 +30,12 @@
   apt_name: "default-jre"
   confirm_installation: false
 
-- name: "logitech-control-center"
+- name: "logitech control center"
   os: 
     - Osx
   installers: 
-    - brewcask
+    - brew
+  brew_name: "caskroom/drivers/logitech-control-center"
   confirm_installation: false
 
 - name: mongodb
