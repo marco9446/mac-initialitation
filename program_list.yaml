@@ -62,7 +62,7 @@
   installers:
     - apt
     - brewcask
-  brew_name: "caskroom/versions/google-chrome-beta"
+  brew_name: "google-chrome-beta"
   apt_name: "chromium-browser"
 
 - name: spectacle
@@ -146,14 +146,14 @@
   installers: 
     - brewcask
 
-- name: Google drive
+- name: Backup and Sync
   os:
     - Osx
     - Linux
   installers: 
     - brewcask
     - apt
-  brew_name: "google-drive"
+  brew_name: "google-backup-and-sync"
   apt_name: "gnome-control-center gnome-online-accounts"
 
 - name: Android SDK
