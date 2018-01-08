@@ -5,6 +5,7 @@ cp ~/Library/Application\ Support/Kodi/userdata/favourites.xml ./program_config/
 
 
 git add . && \
+git status && \
 git add -u && \
 git commit -m "Update config files $(date)" && \
 git push
