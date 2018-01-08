@@ -88,3 +88,4 @@ source $ZSH/oh-my-zsh.sh
 # alias pip="pip3"
 alias serve="python3 -m http.server --cgi"
 alias iperf="iperf3"
+alias pip="pip3"
