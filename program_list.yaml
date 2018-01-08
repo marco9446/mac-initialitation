@@ -38,6 +38,14 @@
   brew_name: "caskroom/drivers/logitech-control-center"
   confirm_installation: false
 
+- name: Noti (Pushbullet client)
+  os: 
+    - Osx
+  installers:
+    - brewcask
+  brew_name: "noti"
+
+
 - name: mongodb
   os:
     - Osx
